@@ -6,4 +6,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Author\FindById\" />
+    <Folder Include="UseCases\Author\Find\" />
+    <Folder Include="UseCases\Author\Delete\" />
+    <Folder Include="UseCases\Author\Update\" />
+    <Folder Include="UseCases\Subject\" />
+    <Folder Include="UseCases\Book\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flunt" Version="2.0.5" />
+    <PackageReference Include="MediatR" Version="12.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyBook.Domain\MyBook.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\MyBook.Application\MyBook.Application.csproj" />
+    <ProjectReference Include="..\MyBook.Domain\MyBook.Domain.csproj" />
   </ItemGroup>
 
 </Project>

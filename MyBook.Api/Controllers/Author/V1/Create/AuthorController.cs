@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using MyBook.Api.Presenters;
+using MyBook.Application.Results;
+using MyBook.Application.UseCases.Author.Create;
+using System.Net;
 
 namespace MyBook.Api.Controllers.Author
 {
@@ -6,10 +10,12 @@ namespace MyBook.Api.Controllers.Author
     {
 
         [HttpPost]
-        public IActionResult Post([FromBody] Models.Author auhtor)
+        public async Task<IActionResult> Post([FromBody] Models.Author auhtor)
         {
 
-            return Ok();
+            var result = await _mediator.Send(new CreateAuthorCommand());
+
+            return await Presenter.Do(result, HttpStatusCode.Accepted);
         }
 
     }
