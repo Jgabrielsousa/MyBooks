@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2-CrossCutting", "3.2-Cro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Domain", "..\MyBook.Domain\MyBook.Domain.csproj", "{B211DF28-E5B5-4095-8BAD-9103568A9487}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Application", "..\MyBook.Application\MyBook.Application.csproj", "{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{B211DF28-E5B5-4095-8BAD-9103568A9487}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B211DF28-E5B5-4095-8BAD-9103568A9487}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B211DF28-E5B5-4095-8BAD-9103568A9487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{18C79698-8C06-41D3-8132-A2E6B42A96DF} = {3D9FEC01-4E57-4A1A-9325-3921B16E21ED}
 		{9895D6F8-63EE-48D7-A8DD-1C7F52782FA8} = {3D9FEC01-4E57-4A1A-9325-3921B16E21ED}
 		{B211DF28-E5B5-4095-8BAD-9103568A9487} = {881167E7-EFED-4D6B-9489-13C49ACB17A3}
+		{7C7746DB-AE07-4E9D-98DE-3E94CCD47737} = {5F397E87-5D6B-4FC5-9F55-1D9B775EC849}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D07D1F8-05C6-4D3D-B455-637FC933EDC1}
