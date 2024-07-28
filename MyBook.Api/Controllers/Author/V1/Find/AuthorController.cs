@@ -13,7 +13,7 @@ namespace MyBook.Api.Controllers.Author
         {
             var result = await _mediator.Send(new FindAuthorCommand());
 
-            return await Presenter.Do(result, HttpStatusCode.Ok);
+            return await Presenter.Do(result, HttpStatusCode.OK);
         }
 
     }

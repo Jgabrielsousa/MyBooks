@@ -15,9 +15,33 @@ namespace MyBook.Application.UseCases.Author.Create
         {
             var list = new List<AuthorDto>();
 
-            list.Add(new AuthorDto(1, "Jhon Snow"));
-            list.Add(new AuthorDto(2, "Jhon Snow2"));
-            list.Add(new AuthorDto(3, "Jhon Snow3"));
+            for (int i = 0; i < 10; i++)
+            {
+                var autor = new AuthorDto(1, "Jhon Snow" + i);
+                var books = new List<BookDto>();
+
+                books.Add(new BookDto()
+                {
+                    Id = i,
+                    Edition = 10,
+                    PublicationDate = "2010",
+                    PublishingCompany = "Saraiva",
+                    Title = "Nome Livro",
+                    Subjects = new List<SubjectDto>() 
+                    { 
+                            new SubjectDto() 
+                            { 
+                                Description = "Assunto" + i, 
+                                Id = i 
+                            } 
+                    }
+                });
+
+                autor.Books = books;
+
+                list.Add(autor);
+
+            }
 
             Result.Data = list;
 

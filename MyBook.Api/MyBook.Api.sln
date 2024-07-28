@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBook.Api", "MyBook.Api.csproj", "{62E84A4E-BE77-4235-B94F-23038BAF75D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Test", "..\MyBook.Test\MyBook.Test.csproj", "{5EB29486-0F8F-419C-93D6-E5422E34FC3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBook.Test", "..\MyBook.Test\MyBook.Test.csproj", "{5EB29486-0F8F-419C-93D6-E5422E34FC3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Presentation", "0-Presentation", "{E3633A5D-5B8D-4D18-9F80-E337DFE1C917}"
 EndProject
@@ -21,11 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1-Data", "3.1-Data", "{18
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2-CrossCutting", "3.2-CrossCutting", "{9895D6F8-63EE-48D7-A8DD-1C7F52782FA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Domain", "..\MyBook.Domain\MyBook.Domain.csproj", "{B211DF28-E5B5-4095-8BAD-9103568A9487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBook.Domain", "..\MyBook.Domain\MyBook.Domain.csproj", "{B211DF28-E5B5-4095-8BAD-9103568A9487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Application", "..\MyBook.Application\MyBook.Application.csproj", "{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBook.Application", "..\MyBook.Application\MyBook.Application.csproj", "{7C7746DB-AE07-4E9D-98DE-3E94CCD47737}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.CrossCutting.Ioc", "..\MyBook.CrossCutting.Ioc\MyBook.CrossCutting.Ioc.csproj", "{2C4FDF91-727E-4074-92E4-26E652573D82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBook.CrossCutting.Ioc", "..\MyBook.CrossCutting.Ioc\MyBook.CrossCutting.Ioc.csproj", "{2C4FDF91-727E-4074-92E4-26E652573D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBook.Data", "..\MyBook.Data\MyBook.Data.csproj", "{D5953180-A383-4B9E-811B-772EFA717427}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{2C4FDF91-727E-4074-92E4-26E652573D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4FDF91-727E-4074-92E4-26E652573D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C4FDF91-727E-4074-92E4-26E652573D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5953180-A383-4B9E-811B-772EFA717427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5953180-A383-4B9E-811B-772EFA717427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5953180-A383-4B9E-811B-772EFA717427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5953180-A383-4B9E-811B-772EFA717427}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{B211DF28-E5B5-4095-8BAD-9103568A9487} = {881167E7-EFED-4D6B-9489-13C49ACB17A3}
 		{7C7746DB-AE07-4E9D-98DE-3E94CCD47737} = {5F397E87-5D6B-4FC5-9F55-1D9B775EC849}
 		{2C4FDF91-727E-4074-92E4-26E652573D82} = {9895D6F8-63EE-48D7-A8DD-1C7F52782FA8}
+		{D5953180-A383-4B9E-811B-772EFA717427} = {18C79698-8C06-41D3-8132-A2E6B42A96DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D07D1F8-05C6-4D3D-B455-637FC933EDC1}
