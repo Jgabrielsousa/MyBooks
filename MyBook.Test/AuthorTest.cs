@@ -2,6 +2,8 @@ using Moq;
 using MyBook.Application.Results;
 using MyBook.Application.UseCases.Author.Create;
 using MyBook.Application.UseCases.Author.Delete;
+using MyBook.Application.UseCases.Author.Find;
+using MyBook.Application.UseCases.Author.FindById;
 using MyBook.Domain.Entities;
 using MyBook.Domain.Interfaces.IRepository;
 

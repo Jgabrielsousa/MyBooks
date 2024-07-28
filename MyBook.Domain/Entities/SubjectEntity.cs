@@ -6,7 +6,7 @@ namespace MyBook.Domain.Entities
     public class SubjectEntity : EntityBase<SubjectEntity>
     {
      
-        public int Description { get; set; }
+        public string Description { get; set; }
 
         public virtual ICollection<SubjectBook> SubjectBook { get; set; }
     }

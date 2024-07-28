@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Models = MyBook.Api.Models;
+using MyBook.Api.Presenters;
+using MyBook.Application.UseCases.Subject.Create;
+using System.Net;
 
 namespace MyBook.Api.Controllers.Subject
 {
@@ -8,10 +10,12 @@ namespace MyBook.Api.Controllers.Subject
     {
 
         [HttpPost]
-        public IActionResult Post([FromBody] Models.Subject subject)
+        public async Task<IActionResult> Post([FromBody] Models.Subject subject)
         {
 
-            return Ok();
+            var result = await _mediator.Send(new CreateSubjectCommand(subject.Description));
+
+            return await Presenter.Do(result, HttpStatusCode.OK);
         }
 
     }

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyBook.Api.Presenters;
-using MyBook.Application.UseCases.Author.Create;
+using MyBook.Application.UseCases.Author.Find;
 using System.Net;
 
 namespace MyBook.Api.Controllers.Author

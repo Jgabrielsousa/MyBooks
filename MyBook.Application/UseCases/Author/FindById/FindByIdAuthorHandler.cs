@@ -3,7 +3,7 @@ using MyBook.Application.Results.Dtos;
 using MyBook.Application.UseCases.Base;
 using MyBook.Domain.Interfaces.IRepository;
 
-namespace MyBook.Application.UseCases.Author.Create
+namespace MyBook.Application.UseCases.Author.FindById
 {
     public class FindByIdAuthorHandler : Handler<FindByIdAuthorCommand, FindByIdAuthorHandler>
     {

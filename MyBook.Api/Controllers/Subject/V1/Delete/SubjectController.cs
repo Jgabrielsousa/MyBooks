@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using MyBook.Api.Presenters;
+using MyBook.Application.UseCases.Subject.Delete;
+using System.Net;
 
 namespace MyBook.Api.Controllers.Subject
 {
@@ -7,10 +10,12 @@ namespace MyBook.Api.Controllers.Subject
     {
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            var result = await _mediator.Send(new DeleteSubjectCommand(id));
 
-            return Ok();
+            return await Presenter.Do(result, HttpStatusCode.OK);
+
         }
 
     }

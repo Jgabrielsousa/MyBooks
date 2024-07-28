@@ -1,6 +1,5 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MyBook.Api.Controllers.Subject;
 
 namespace MyBook.Api.Controllers.Author
 {

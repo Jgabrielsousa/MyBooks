@@ -1,6 +1,6 @@
 ﻿using MyBook.Application.UseCases.Base;
 
-namespace MyBook.Application.UseCases.Author.Create
+namespace MyBook.Application.UseCases.Author.FindById
 {
     public class FindByIdAuthorCommand : Command<FindByIdAuthorCommand>
     {

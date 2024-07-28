@@ -1,4 +1,6 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MyBook.Api.Controllers.Author;
 
 namespace MyBook.Api.Controllers.Subject
 {
@@ -6,18 +8,17 @@ namespace MyBook.Api.Controllers.Subject
     [Route("[controller]")]
     public partial class SubjectController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+       
 
         private readonly ILogger<SubjectController> _logger;
+        private readonly IMediator _mediator;
 
-        public SubjectController(ILogger<SubjectController> logger)
+        public SubjectController(ILogger<SubjectController> logger, IMediator mediator)
         {
             _logger = logger;
+            _mediator = mediator;
         }
 
-       
+
     }
 }
