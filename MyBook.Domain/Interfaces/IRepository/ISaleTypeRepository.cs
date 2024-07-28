@@ -3,7 +3,7 @@ using MyBook.Domain.Interfaces.Base;
 
 namespace MyBook.Domain.Interfaces.IRepository
 {
-    public  interface IAuthorRepository : IRepositoryBase<AuthorEntity>
+    public  interface ISaleTypeRepository : IRepositoryBase<SaleTypeEntity>
     {
 
     }

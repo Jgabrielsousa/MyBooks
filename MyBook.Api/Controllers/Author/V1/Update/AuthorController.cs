@@ -9,9 +9,9 @@ namespace MyBook.Api.Controllers.Author
     {
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] Models.Author auhtor)
+        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] Models.Author author)
         {
-            var result = await _mediator.Send(new AlterAuthorCommand());
+            var result = await _mediator.Send(new AlterAuthorCommand(id, author));
 
             return await Presenter.Do(result, HttpStatusCode.OK);
         }

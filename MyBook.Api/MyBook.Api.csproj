@@ -8,13 +8,18 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MyBook.Application\MyBook.Application.csproj" />
     <ProjectReference Include="..\MyBook.CrossCutting.Ioc\MyBook.CrossCutting.Ioc.csproj" />
+    <ProjectReference Include="..\MyBook.Data\MyBook.Data.csproj" />
   </ItemGroup>
 
 </Project>

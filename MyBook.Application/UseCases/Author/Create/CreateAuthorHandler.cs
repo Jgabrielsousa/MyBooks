@@ -1,19 +1,23 @@
 ﻿using MyBook.Application.Results;
-using MyBook.Application.Results.Dtos;
 using MyBook.Application.UseCases.Base;
+using MyBook.Domain.Entities;
+using MyBook.Domain.Interfaces.IRepository;
 
 namespace MyBook.Application.UseCases.Author.Create
 {
     public  class CreateAuthorHandler : Handler<CreateAuthorCommand, CreateAuthorHandler>
     {
-        public CreateAuthorHandler()
+        private readonly IAuthorRepository _repo;
+        public CreateAuthorHandler(IAuthorRepository repo)
         {
-                
+            _repo= repo;
         }
 
         public override Task<Result> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
         {
-            Result.Data = new AuthorDto(1, "Jhon Snow");
+
+            var entity = _repo.Add(new AuthorEntity() { Name = request.Name });
+            Result.Data = entity;
 
             return Task.FromResult(Result);
         }

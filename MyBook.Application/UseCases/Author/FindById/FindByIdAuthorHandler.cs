@@ -1,19 +1,22 @@
 ﻿using MyBook.Application.Results;
 using MyBook.Application.Results.Dtos;
 using MyBook.Application.UseCases.Base;
+using MyBook.Domain.Interfaces.IRepository;
 
 namespace MyBook.Application.UseCases.Author.Create
 {
     public class FindByIdAuthorHandler : Handler<FindByIdAuthorCommand, FindByIdAuthorHandler>
     {
-        public FindByIdAuthorHandler()
+      
+        private readonly IAuthorRepository _repo;
+        public FindByIdAuthorHandler(IAuthorRepository repo)
         {
-
+            _repo = repo;
         }
 
         public override Task<Result> Handle(FindByIdAuthorCommand request, CancellationToken cancellationToken)
         {
-            Result.Data = new AuthorDto(1, "Jhon Snow");
+            Result.Data = _repo.Find(request.Id);
 
             return Task.FromResult(Result);
         }

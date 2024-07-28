@@ -1,4 +1,5 @@
 ﻿using MyBook.Domain.Entities.Base;
+using MyBook.Domain.Entities.ManyToMany;
 
 namespace MyBook.Domain.Entities
 {
@@ -6,5 +7,7 @@ namespace MyBook.Domain.Entities
     {
      
         public int Description { get; set; }
+
+        public virtual ICollection<SubjectBook> SubjectBook { get; set; }
     }
 }

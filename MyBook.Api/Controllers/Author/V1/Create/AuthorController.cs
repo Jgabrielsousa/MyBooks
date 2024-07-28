@@ -13,7 +13,7 @@ namespace MyBook.Api.Controllers.Author
         public async Task<IActionResult> Post([FromBody] Models.Author auhtor)
         {
 
-            var result = await _mediator.Send(new CreateAuthorCommand());
+            var result = await _mediator.Send(new CreateAuthorCommand(auhtor.Name));
 
             return await Presenter.Do(result, HttpStatusCode.OK);
         }

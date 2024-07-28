@@ -1,18 +1,22 @@
 
 
+using Microsoft.EntityFrameworkCore;
 using MyBook.CrossCutting.Ioc;
+using MyBook.Data.Context;
+using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.RegisterMediatorServices();
+builder.Services.AddMediatorServices();
+builder.Services.AddIoCServices();
 builder.Services.AddCors();
-
+builder.Services.AddSqlServices(configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,5 +32,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<MyBookDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();

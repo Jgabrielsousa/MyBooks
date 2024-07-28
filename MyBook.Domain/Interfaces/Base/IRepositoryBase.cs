@@ -6,7 +6,7 @@
 
         void Remove(T entidade);
 
-        T Find(Guid Id);
+        T Find(int Id);
 
         IEnumerable<T> GetAll();
 
