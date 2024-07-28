@@ -1,19 +1,19 @@
-﻿namespace MyBook.Application.UseCases.Author.Create
+﻿namespace MyBook.Application.Results.Dtos
 {
-    public  class CreateAuthorDto
+    public class AuthorDto
     {
 
         public int Id { get; set; }
         public string Name { get; set; }
 
 
-        public CreateAuthorDto(int id, string name)
+        public AuthorDto(int id, string name)
         {
             Id = id;
             Name = name;
         }
 
-   
+
 
 
     }

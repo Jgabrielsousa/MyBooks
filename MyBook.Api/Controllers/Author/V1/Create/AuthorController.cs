@@ -15,7 +15,7 @@ namespace MyBook.Api.Controllers.Author
 
             var result = await _mediator.Send(new CreateAuthorCommand());
 
-            return await Presenter.Do(result, HttpStatusCode.Accepted);
+            return await Presenter.Do(result, HttpStatusCode.OK);
         }
 
     }

@@ -8,6 +8,7 @@ namespace MyBook.CrossCutting.Ioc
     {
         private const string APPLICATION_NAMESPACE = "MyBook.Application";
 
+
         public static void RegisterMediatorServices(this IServiceCollection services)
         {
             var currentAssemblies = AppDomain.CurrentDomain.GetAssemblies();

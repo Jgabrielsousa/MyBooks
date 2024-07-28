@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Author\FindById\" />
-    <Folder Include="UseCases\Author\Find\" />
-    <Folder Include="UseCases\Author\Delete\" />
-    <Folder Include="UseCases\Author\Update\" />
     <Folder Include="UseCases\Subject\" />
     <Folder Include="UseCases\Book\" />
   </ItemGroup>

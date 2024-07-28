@@ -8,12 +8,12 @@ namespace MyBook.Api.Controllers.Author
     public partial class AuthorController : ControllerBase
     {
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] Models.Author auhtor)
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            var result = await _mediator.Send(new AlterAuthorCommand());
+            var result = await _mediator.Send(new FindAuthorCommand());
 
-            return await Presenter.Do(result, HttpStatusCode.OK);
+            return await Presenter.Do(result, HttpStatusCode.Ok);
         }
 
     }

@@ -4,14 +4,14 @@ using MyBook.Application.UseCases.Base;
 
 namespace MyBook.Application.UseCases.Author.Create
 {
-    public  class CreateAuthorHandler : Handler<CreateAuthorCommand, CreateAuthorHandler>
+    public class FindByIdAuthorHandler : Handler<FindByIdAuthorCommand, FindByIdAuthorHandler>
     {
-        public CreateAuthorHandler()
+        public FindByIdAuthorHandler()
         {
-                
+
         }
 
-        public override Task<Result> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
+        public override Task<Result> Handle(FindByIdAuthorCommand request, CancellationToken cancellationToken)
         {
             Result.Data = new AuthorDto(1, "Jhon Snow");
 
