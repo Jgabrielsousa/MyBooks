@@ -9,10 +9,10 @@ namespace MyBook.Api.Controllers.Author
     public partial class AuthorController : ControllerBase
     {
       
-        private readonly ILogger<SubjectController> _logger;
+        private readonly ILogger<AuthorController> _logger;
         private readonly IMediator _mediator;
 
-        public AuthorController(ILogger<SubjectController> logger, IMediator mediator)
+        public AuthorController(ILogger<AuthorController> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;

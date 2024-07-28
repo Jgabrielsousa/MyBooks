@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyBook.Api.Presenters;
-using MyBook.Application.UseCases.Book.Update;
+using MyBook.Application.UseCases.Book.FindById;
 using System.Net;
 
 namespace MyBook.Api.Controllers.Book
@@ -9,11 +9,11 @@ namespace MyBook.Api.Controllers.Book
     public partial class BookController : ControllerBase
     {
 
-       
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] Models.Book book)
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> FindById([FromRoute] int id)
         {
-            var result = await _mediator.Send(new AlterBookCommand(id, book));
+            var result = await _mediator.Send(new FindByIdBookCommand(id));
 
             return await Presenter.Do(result, HttpStatusCode.OK);
         }

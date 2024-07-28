@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="UseCases\SaleType\" />
     <Folder Include="UseCases\Subject\" />
-    <Folder Include="UseCases\Book\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -120,7 +120,9 @@ namespace MyBook.Test
         #endregion
 
 
+        #region DeleteAuthor
 
+       
         public async Task<Result> RunDeleteAuthor(DeleteAuthorCommand command)
         {
             var handler = new DeleteAuthorHandler(_repo.Object);
@@ -145,6 +147,6 @@ namespace MyBook.Test
             //Assertion
             Assert.Equal(checkValue, false);
         }
-
+        #endregion
     }
 }
