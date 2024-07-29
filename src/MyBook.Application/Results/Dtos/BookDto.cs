@@ -8,6 +8,8 @@
         public int Edition { get; set; }
         public string PublicationDate { get; set; }
         public int AuthorId { get; set; }
+
+        public string AuthorName { get; set; }
         public IEnumerable<SubjectDto> Subjects { get; set; }
         public IEnumerable<SaleTypeDto> SaleTypes{ get; set; }
         public BookDto()

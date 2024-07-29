@@ -18,7 +18,7 @@ namespace MyBook.Data.Repository
         {
             return DbSet.AsNoTracking().Select(c => c)
             .Include(c => c.AuthorBook)
-            //.ThenInclude(c => c.Author)
+            .ThenInclude(c => c.Author)
             .Include(c => c.SubjectBook)
             .ThenInclude(c => c.Subject)
             .Include(c=>c.SaleTypeBook)

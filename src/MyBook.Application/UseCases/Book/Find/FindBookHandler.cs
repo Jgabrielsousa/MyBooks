@@ -60,6 +60,7 @@ namespace MyBook.Application.UseCases.Book.Find
                     {
                         Id = book.Id,
                         AuthorId = book.AuthorBook.First().AuthorId,
+                        AuthorName = book.AuthorBook.First().Author.Name,
                         Title = book.Title,
                         PublishingCompany = book.PublishingCompany,
                         Edition = book.Edition,
