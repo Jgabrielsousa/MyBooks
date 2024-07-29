@@ -31,3 +31,7 @@ de relatórios gerados em Python. O objetivo é fornecer uma solução robusta p
 ├── Others
 │   ├── Relatorio
 │   └── Script
+
+
+![alt text](https://github.com/Jgabrielsousa/MyBooks/blob/master/Others/Estrutura.png?raw=true)
+
