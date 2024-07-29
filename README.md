@@ -13,6 +13,7 @@ de relatórios gerados em Python. O objetivo é fornecer uma solução robusta p
 - **Relatórios:** Python
 - **ORM:** Entity Framework Core
 - **Bibliotecas Python:** pandas, streamlimit (para geração de relatórios)
+- **FrontEnd:** Angular 17
 
 ## Estrutura do Projeto
 
