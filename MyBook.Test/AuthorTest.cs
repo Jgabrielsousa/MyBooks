@@ -50,7 +50,7 @@ namespace MyBook.Test
 
             var result = await RunCreateAuthor(command);
 
-            var checkValue = ((AuthorEntity)result.Data).Name;
+            var checkValue = ((CreateAuthorCommand)result.Data).Name;
             //Assertion
             Assert.Equal(checkValue, _name);
 

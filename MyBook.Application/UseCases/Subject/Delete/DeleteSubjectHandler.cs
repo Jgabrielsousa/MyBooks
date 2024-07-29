@@ -17,8 +17,17 @@ namespace MyBook.Application.UseCases.Subject.Delete
 
         public override Task<Result> Handle(DeleteSubjectCommand request, CancellationToken cancellationToken)
         {
-            var entity = _repo.Find(request.Id);
-            _repo.Remove(entity);
+            try
+            {
+                var entity = _repo.Find(request.Id);
+                _repo.Remove(entity);
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+            }
+          
 
             return Task.FromResult(Result);
         }

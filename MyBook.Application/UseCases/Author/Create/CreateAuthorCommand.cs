@@ -4,6 +4,7 @@ namespace MyBook.Application.UseCases.Author.Create
 {
     public class CreateAuthorCommand : Command<CreateAuthorCommand>
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public CreateAuthorCommand()
         {

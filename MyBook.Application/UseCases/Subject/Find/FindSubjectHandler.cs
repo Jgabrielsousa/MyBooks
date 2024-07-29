@@ -15,9 +15,17 @@ namespace MyBook.Application.UseCases.Subject.Find
 
         public override Task<Result> Handle(FindSubjectCommand request, CancellationToken cancellationToken)
         {
-            
 
-            Result.Data = _repo.GetAll();
+            try
+            {
+                Result.Data = _repo.GetAll();
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+            }
+           
 
             return Task.FromResult(Result);
         }

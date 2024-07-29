@@ -7,7 +7,7 @@ namespace MyBook.Application.UseCases.Author.FindById
 {
     public class FindByIdAuthorHandler : Handler<FindByIdAuthorCommand, FindByIdAuthorHandler>
     {
-      
+
         private readonly IAuthorRepository _repo;
         public FindByIdAuthorHandler(IAuthorRepository repo)
         {
@@ -16,7 +16,16 @@ namespace MyBook.Application.UseCases.Author.FindById
 
         public override Task<Result> Handle(FindByIdAuthorCommand request, CancellationToken cancellationToken)
         {
-            Result.Data = _repo.Find(request.Id);
+            try
+            {
+                Result.Data = _repo.Find(request.Id);
+
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+            }
 
             return Task.FromResult(Result);
         }

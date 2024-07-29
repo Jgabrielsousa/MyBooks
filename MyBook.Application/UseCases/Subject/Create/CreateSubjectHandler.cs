@@ -48,7 +48,7 @@ namespace MyBook.Application.UseCases.Subject.Create
             catch (Exception)
             {
                 Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
-                return Task.FromResult(Result);
+         
             }
             
 

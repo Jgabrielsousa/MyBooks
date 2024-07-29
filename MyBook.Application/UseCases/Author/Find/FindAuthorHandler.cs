@@ -16,9 +16,17 @@ namespace MyBook.Application.UseCases.Author.Find
 
         public override Task<Result> Handle(FindAuthorCommand request, CancellationToken cancellationToken)
         {
-            
+            try
+            {
+                Result.Data = _repo.GetAll();
 
-            Result.Data = _repo.GetAll();
+            
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+            }
 
             return Task.FromResult(Result);
         }

@@ -15,10 +15,19 @@ namespace MyBook.Application.UseCases.Subject.Update
 
         public override Task<Result> Handle(AlterSubjectCommand request, CancellationToken cancellationToken)
         {
-            var entity = _repo.Find(request.Id);
-            entity.Description = request.Subject.Description;
-            _repo.Update(entity);
+            try
+            {
+                var entity = _repo.Find(request.Id);
+                entity.Description = request.Subject.Description;
+                _repo.Update(entity);
 
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+            }
+           
             return Task.FromResult(Result);
         }
     }

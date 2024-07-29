@@ -15,9 +15,20 @@ namespace MyBook.Application.UseCases.Author.Create
 
         public override Task<Result> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
         {
+            try
+            {
+                var entity = _repo.Add(new AuthorEntity() { Name = request.Name });
 
-            var entity = _repo.Add(new AuthorEntity() { Name = request.Name });
-            Result.Data = entity;
+                request.Id = entity.Id;
+                Result.Data = request;
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+            }
+
+         
 
             return Task.FromResult(Result);
         }
