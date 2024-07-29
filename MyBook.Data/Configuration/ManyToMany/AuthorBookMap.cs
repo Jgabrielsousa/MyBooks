@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MyBook.Data.Configuration.Base;
+using MyBook.Domain.Entities;
 using MyBook.Domain.Entities.ManyToMany;
 
 namespace MyBook.Data.Configuration.ManyToMany
 {
-    public class AuthorBookMap : IEntityTypeConfiguration<AuthorBook>
+    public class AuthorBookMap : BaseMap<AuthorBook>, IEntityTypeConfiguration<AuthorBook>
     {
         public void Configure(EntityTypeBuilder<AuthorBook> builder)
         {
-            builder.HasKey(c => new { c.Id, c.AuthorId, c.BookId });
+            //builder.HasKey(c => new { c.Id, c.AuthorId, c.BookId });
 
             builder
            .HasOne(c => c.Author)

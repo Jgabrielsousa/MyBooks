@@ -24,10 +24,13 @@ namespace MyBook.CrossCutting.Ioc
 
         public static void AddIoCServices(this IServiceCollection services)
         {
+            services.AddTransient<IAuthorBookRepository, AuthorBookRepository>();
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ISaleTypeRepository, SaleTypeRepository>();
             services.AddTransient<ISubjectRepository, SubjectRepository>();
+            services.AddTransient<ISaleTypeBookRepository, SaleTypeBookRepository>();
+            services.AddTransient<ISubjectBookRepository, SubjectBookRepository>();
         }
 
         public static IServiceCollection AddSqlServices(this IServiceCollection services, IConfiguration configuration)

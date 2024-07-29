@@ -1,15 +1,28 @@
 
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBook.CrossCutting.Ioc;
 using MyBook.Data.Context;
+using Newtonsoft.Json.Serialization;
 using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+});
+
+
+
+//builder.Services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+//    .AddNewtonsoftJson(opt => {
+//        opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+//    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

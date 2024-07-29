@@ -1,24 +1,23 @@
 ﻿using MyBook.Application.Results;
 using MyBook.Application.UseCases.Base;
 using MyBook.Domain.Entities;
-using MyBook.Domain.Entities.ManyToMany;
 using MyBook.Domain.Interfaces.IRepository;
 
-namespace MyBook.Application.UseCases.Subject.Create
+namespace MyBook.Application.UseCases.SaleType.Create
 {
-    public  class CreateSubjectHandler : Handler<CreateSubjectCommand, CreateSubjectHandler>
+    public class CreateSaleTypeHandler : Handler<CreateSaleTypeCommand, CreateSaleTypeHandler>
     {
-        private readonly ISubjectRepository _repo;
+        private readonly ISaleTypeRepository _repo;
         private readonly IBookRepository _repoBook;
-        private readonly ISubjectBookRepository _repoSubjectBook;
-        public CreateSubjectHandler(ISubjectRepository repo, IBookRepository repoBook, ISubjectBookRepository repoSubjectBook)
+        private readonly ISaleTypeBookRepository _repoSalesTypeBook;
+        public CreateSaleTypeHandler(ISaleTypeRepository repo, IBookRepository repoBook, ISaleTypeBookRepository repoSalesTypeBook)
         {
             _repo = repo;
             _repoBook = repoBook;
-            _repoSubjectBook = repoSubjectBook;
+            _repoSalesTypeBook = repoSalesTypeBook;
         }
 
-        public override Task<Result> Handle(CreateSubjectCommand request, CancellationToken cancellationToken)
+        public override Task<Result> Handle(CreateSaleTypeCommand request, CancellationToken cancellationToken)
         {
 
             try
@@ -30,29 +29,31 @@ namespace MyBook.Application.UseCases.Subject.Create
                     Result.AddNotification("Book not Found", Domain.Enums.ErrorCode.NotFound);
                     return Task.FromResult(Result);
                 }
+                //Add New Sales Type 
+                var entity = _repo.Add(new SaleTypeEntity() { Description = request.Description, Value = request.Value });
 
-                //Add New Subject
-                var entity = _repo.Add(new SubjectEntity() { Description = request.Description });
-               
 
-                //Create Relation Tbw Book and New Subject 
-                _repoSubjectBook.Add(new SubjectBook()
+                //Create Relation Tbw Book and New Sales 
+                _repoSalesTypeBook.Add(new Domain.Entities.ManyToMany.SaleTypeBook()
                 {
-                    BookId = bookEntity.Id
-                    ,SubjectId = entity.Id
+                    BookId = bookEntity.Id,
+                    SaleTypeId = entity.Id
                 });
+
                 request.Id = entity.Id;
+
                 Result.Data = request;
 
+               
             }
             catch (Exception)
             {
                 Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
                 return Task.FromResult(Result);
             }
-            
 
             return Task.FromResult(Result);
+
         }
     }
 }

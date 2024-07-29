@@ -17,8 +17,25 @@ namespace MyBook.Application.UseCases.Author.Delete
 
         public override Task<Result> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
         {
-            var entity = _repo.Find(request.Id);
-            _repo.Remove(entity);
+            try
+            {
+                var entity = _repo.Find(request.Id);
+
+                if (entity == null)
+                {
+                    Result.AddNotification("Author not Found", Domain.Enums.ErrorCode.NotFound);
+                    return Task.FromResult(Result);
+                }
+
+
+                _repo.Remove(entity);
+            }
+            catch (Exception)
+            {
+
+                Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
+
+            }
 
             return Task.FromResult(Result);
         }

@@ -17,7 +17,8 @@ namespace MyBook.Api.Controllers.Book
             command.Title = book.Title;
             command.PublishingCompany = book.PublishingCompany;
             command.Edition = book.Edition;
-            command.PublicationDate = book.PublicationDate; 
+            command.PublicationDate = book.PublicationDate;
+            command.AuthodId = book.AuthorId;
             var result = await _mediator.Send(command);
 
             return await Presenter.Do(result, HttpStatusCode.OK);

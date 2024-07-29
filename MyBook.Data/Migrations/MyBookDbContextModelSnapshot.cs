@@ -69,7 +69,10 @@ namespace MyBook.Data.Migrations
             modelBuilder.Entity("MyBook.Domain.Entities.ManyToMany.AuthorBook", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -77,7 +80,7 @@ namespace MyBook.Data.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id", "AuthorId", "BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
@@ -89,15 +92,18 @@ namespace MyBook.Data.Migrations
             modelBuilder.Entity("MyBook.Domain.Entities.ManyToMany.SaleTypeBook", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<int>("SaleTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id", "SaleTypeId", "BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
@@ -109,15 +115,18 @@ namespace MyBook.Data.Migrations
             modelBuilder.Entity("MyBook.Domain.Entities.ManyToMany.SubjectBook", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id", "SubjectId", "BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BookId");
 

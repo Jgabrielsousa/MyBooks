@@ -5,6 +5,7 @@ using MyBook.Application.UseCases.Subject.Delete;
 using MyBook.Application.UseCases.Subject.Find;
 using MyBook.Application.UseCases.Subject.FindById;
 using MyBook.Domain.Entities;
+using MyBook.Domain.Entities.ManyToMany;
 using MyBook.Domain.Interfaces.IRepository;
 
 namespace MyBook.Test
@@ -14,8 +15,34 @@ namespace MyBook.Test
 
 
         private readonly Mock<ISubjectRepository> _repo = new Mock<ISubjectRepository>();
-        private const string  _description= "Joao";
-        private const int  _id = 1;
+        private readonly Mock<IBookRepository> _repoBook = new Mock<IBookRepository>();
+        private readonly Mock<ISubjectBookRepository> _repoSubjectBook = new Mock<ISubjectBookRepository>();
+
+        private const string _description = "Joao";
+        private const int _id = 1;
+        private const string _title = "Titulo Livro";
+        private const string _publishingCompany = "Saraiva";
+        private const int _edition = 1;
+        private const string _publicationDate = "2010";
+
+        public BookEntity BookEntity()
+       => new BookEntity()
+       {
+           Id = _id,
+           Title = _title,
+           PublishingCompany = _publishingCompany,
+           Edition = _edition,
+           PublicationDate = _publicationDate
+       };
+
+        public SubjectBook SubjectBookEntity()
+            => new SubjectBook()
+            {
+                Id = _id
+            };
+
+        public SubjectEntity SubjectEntity()
+           => new SubjectEntity() { Description = _description };
 
         #region CreateSubject  
 
@@ -28,7 +55,7 @@ namespace MyBook.Test
 
         public async Task<Result> RunCreateSubject(CreateSubjectCommand command)
         {
-            var handler = new CreateSubjectHandler(_repo.Object);
+            var handler = new CreateSubjectHandler(_repo.Object,_repoBook.Object,_repoSubjectBook.Object);
             return await handler.Handle(command, new CancellationToken());
 
         }
@@ -41,12 +68,16 @@ namespace MyBook.Test
             var command = CreateCommand(_description);
 
             //Act
-            var obj = new SubjectEntity() { Description = _description};
-            _repo.Setup(c => c.Add(It.IsAny<SubjectEntity>())).Returns(obj);
+
+            _repo.Setup(c => c.Add(It.IsAny<SubjectEntity>())).Returns(SubjectEntity());
+
+            _repoBook.Setup(c => c.Find(It.IsAny<int>())).Returns(BookEntity());
+
+            _repoSubjectBook.Setup(c => c.Add(It.IsAny<SubjectBook>())).Returns(SubjectBookEntity());
 
             var result = await RunCreateSubject(command);
 
-            var checkValue = ((SubjectEntity)result.Data).Description;
+            var checkValue = ((CreateSubjectCommand)result.Data).Description;
             //Assertion
             Assert.Equal(checkValue, _description);
 

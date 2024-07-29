@@ -14,7 +14,6 @@ namespace MyBook.Domain.Entities
         public virtual ICollection<SubjectBook> SubjectBook { get; set; }
         public virtual ICollection<SaleTypeBook> SaleTypeBook { get; set; }
 
-        //public virtual ICollection<IEnumerable<SaleTypeEntity>> Sales { get; set; }
-        //public virtual ICollection<IEnumerable<SubjectEntity>> Subjects { get; set; }
+
     }
 }

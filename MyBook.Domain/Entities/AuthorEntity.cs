@@ -7,6 +7,6 @@ namespace MyBook.Domain.Entities
     {
         public string Name { get; set; }
 
-        public virtual ICollection<AuthorBook> AuthorBook { get; set; }
+        public  virtual ICollection<AuthorBook> AuthorBook { get; set; }
     }
 }

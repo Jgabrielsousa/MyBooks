@@ -9,15 +9,17 @@ namespace MyBook.Api.Models
         public string PublishingCompany { get; set; }
         public int Edition { get; set; }
         public string PublicationDate { get; set; }
+        public int AuthorId { get; set; }
 
-        public static implicit operator BookDto(Book autor)
+        public static implicit operator BookDto(Book author)
         {
 
             return new BookDto() {
-                Title = autor.Title,
-                PublishingCompany = autor.PublishingCompany,
-                Edition = autor.Edition,
-                PublicationDate = autor.PublicationDate
+                Title = author.Title,
+                PublishingCompany = author.PublishingCompany,
+                Edition = author.Edition,
+                PublicationDate = author.PublicationDate,
+                AuthorId = author.AuthorId,
             };
         }
     }

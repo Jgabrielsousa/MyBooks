@@ -5,7 +5,7 @@
 namespace MyBook.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class First : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,7 +59,7 @@ namespace MyBook.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<int>(type: "int", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,13 +70,14 @@ namespace MyBook.Data.Migrations
                 name: "AuthorBook",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     BookId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuthorBook", x => new { x.Id, x.AuthorId, x.BookId });
+                    table.PrimaryKey("PK_AuthorBook", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AuthorBook_Authors_AuthorId",
                         column: x => x.AuthorId,
@@ -95,13 +96,14 @@ namespace MyBook.Data.Migrations
                 name: "SaleTypeBook",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SaleTypeId = table.Column<int>(type: "int", nullable: false),
                     BookId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SaleTypeBook", x => new { x.Id, x.SaleTypeId, x.BookId });
+                    table.PrimaryKey("PK_SaleTypeBook", x => x.Id);
                     table.ForeignKey(
                         name: "FK_SaleTypeBook_Books_BookId",
                         column: x => x.BookId,
@@ -120,13 +122,14 @@ namespace MyBook.Data.Migrations
                 name: "SubjectBook",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SubjectId = table.Column<int>(type: "int", nullable: false),
                     BookId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubjectBook", x => new { x.Id, x.SubjectId, x.BookId });
+                    table.PrimaryKey("PK_SubjectBook", x => x.Id);
                     table.ForeignKey(
                         name: "FK_SubjectBook_Books_BookId",
                         column: x => x.BookId,

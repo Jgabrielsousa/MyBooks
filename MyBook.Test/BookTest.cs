@@ -1,11 +1,13 @@
 using Moq;
 using MyBook.Application.Results;
+using MyBook.Application.Results.Dtos;
 using MyBook.Application.UseCases.Base;
 using MyBook.Application.UseCases.Book.Create;
 using MyBook.Application.UseCases.Book.Delete;
 using MyBook.Application.UseCases.Book.Find;
 using MyBook.Application.UseCases.Book.FindById;
 using MyBook.Domain.Entities;
+using MyBook.Domain.Entities.ManyToMany;
 using MyBook.Domain.Interfaces.IRepository;
 
 namespace MyBook.Test
@@ -15,13 +17,22 @@ namespace MyBook.Test
 
 
         private readonly Mock<IBookRepository> _repo = new Mock<IBookRepository>();
+        private readonly Mock<IAuthorRepository> _repoAuthor = new Mock<IAuthorRepository>();
+        private readonly Mock<IAuthorBookRepository> _repoAuthorBook = new Mock<IAuthorBookRepository>();
 
+    
 
         private const int _id = 1;
         private const string _title = "Titulo Livro";
         private const string _publishingCompany = "Saraiva";
         private const int _edition = 1;
         private const string _publicationDate = "2010";
+
+        private const string _name = "Joao";
+
+
+        public AuthorEntity AuthorEntity()
+            => new AuthorEntity() { Name = _name };
 
         #region CreateBook  
 
@@ -37,7 +48,7 @@ namespace MyBook.Test
 
         public async Task<Result> RunCreateBook(CreateBookCommand command)
         {
-            var handler = new CreateBookHandler(_repo.Object);
+            var handler = new CreateBookHandler(_repo.Object, _repoAuthorBook.Object, _repoAuthor.Object);
             return await handler.Handle(command, new CancellationToken());
 
         }
@@ -49,7 +60,11 @@ namespace MyBook.Test
             Title = _title,
             PublishingCompany = _publishingCompany,
             Edition = _edition,
-            PublicationDate = _publicationDate
+            PublicationDate = _publicationDate,
+            SubjectBook = new List<SubjectBook>(),
+            SaleTypeBook = new List<SaleTypeBook>(),
+            AuthorBook = new List<AuthorBook>() { new AuthorBook() { AuthorId = _id} },
+           
         };
 
         [Fact]
@@ -60,11 +75,16 @@ namespace MyBook.Test
             var command = CreateCommand();
 
             //Act
+            _repoAuthor.Setup(c => c.Find(It.IsAny<int>())).Returns(AuthorEntity());
+
             _repo.Setup(c => c.Add(It.IsAny<BookEntity>())).Returns(BookEntity());
+            _repoAuthorBook.Setup(c => c.Add(It.IsAny<AuthorBook>())).Returns(new AuthorBook());
+
+        
 
             var result = await RunCreateBook(command);
 
-            var checkValue = ((BookEntity)result.Data).Title;
+            var checkValue = ((CreateBookCommand)result.Data).Title;
             //Assertion
             Assert.Equal(checkValue, BookEntity().Title);
 
@@ -95,7 +115,7 @@ namespace MyBook.Test
             _repo.Setup(c => c.GetAll()).Returns(list);
 
             var result = await RunFindBook(new FindBookCommand());
-            var checkValue = ((List<BookEntity>)result.Data).Any();
+            var checkValue = ((List<BookDto>)result.Data).Any();
             //Assertion
             Assert.Equal(checkValue, true);
         }

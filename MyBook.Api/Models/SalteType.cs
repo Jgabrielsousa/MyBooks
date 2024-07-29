@@ -7,10 +7,12 @@ namespace MyBook.Api.Models
     {
         public string Description { get; set; }
         public float Value { get; set; }
-        public static implicit operator SalteTypeDto(SalteType salesType)
+        public int BookId { get; set; }
+
+        public static implicit operator SaleTypeDto(SalteType salesType)
         {
 
-            return new SalteTypeDto() { Description = salesType.Description,  Value = salesType.Value };
+            return new SaleTypeDto() { Description = salesType.Description,  Value = salesType.Value , BookId = salesType .BookId};
  ;
         }
     }

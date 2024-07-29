@@ -2,20 +2,20 @@
 using MyBook.Application.UseCases.Base;
 using MyBook.Domain.Interfaces.IRepository;
 
-namespace MyBook.Application.UseCases.Book.Delete
+namespace MyBook.Application.UseCases.SaleType.Delete
 {
-    public class DeleteBookHandler : Handler<DeleteBookCommand, DeleteBookHandler>
+    public class DeleteSaleTypeHandler : Handler<DeleteSaleTypeCommand, DeleteSaleTypeHandler>
     {
 
 
-        private readonly IBookRepository _repo;
-        public DeleteBookHandler(IBookRepository repo)
+        private readonly ISaleTypeRepository _repo;
+        public DeleteSaleTypeHandler(ISaleTypeRepository repo)
         {
             _repo = repo;
         }
 
 
-        public override Task<Result> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
+        public override Task<Result> Handle(DeleteSaleTypeCommand request, CancellationToken cancellationToken)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace MyBook.Application.UseCases.Book.Delete
 
                 if (entity == null)
                 {
-                    Result.AddNotification("Book not Found", Domain.Enums.ErrorCode.NotFound);
+                    Result.AddNotification("SaleType not Found", Domain.Enums.ErrorCode.NotFound);
                     return Task.FromResult(Result);
                 }
 
@@ -34,8 +34,9 @@ namespace MyBook.Application.UseCases.Book.Delete
             {
 
                 Result.AddNotification("Somenting went wrong", Domain.Enums.ErrorCode.InternalError);
-        
+                
             }
+            
 
             return Task.FromResult(Result);
         }

@@ -11,8 +11,8 @@ using MyBook.Data.Context;
 namespace MyBook.Data.Migrations
 {
     [DbContext(typeof(MyBookDbContext))]
-    [Migration("20240728212608_Init")]
-    partial class Init
+    [Migration("20240729001016_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,7 +72,10 @@ namespace MyBook.Data.Migrations
             modelBuilder.Entity("MyBook.Domain.Entities.ManyToMany.AuthorBook", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -80,7 +83,7 @@ namespace MyBook.Data.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id", "AuthorId", "BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
@@ -92,15 +95,18 @@ namespace MyBook.Data.Migrations
             modelBuilder.Entity("MyBook.Domain.Entities.ManyToMany.SaleTypeBook", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<int>("SaleTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id", "SaleTypeId", "BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
@@ -112,15 +118,18 @@ namespace MyBook.Data.Migrations
             modelBuilder.Entity("MyBook.Domain.Entities.ManyToMany.SubjectBook", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<int>("SubjectId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id", "SubjectId", "BookId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
@@ -157,8 +166,9 @@ namespace MyBook.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Description")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

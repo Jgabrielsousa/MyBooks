@@ -6,6 +6,7 @@ using MyBook.Application.UseCases.Author.Find;
 using MyBook.Application.UseCases.Author.FindById;
 using MyBook.Domain.Entities;
 using MyBook.Domain.Interfaces.IRepository;
+using System.Xml.Linq;
 
 namespace MyBook.Test
 {
@@ -16,6 +17,9 @@ namespace MyBook.Test
         private readonly Mock<IAuthorRepository> _repo = new Mock<IAuthorRepository>();
         private const string  _name = "Joao";
         private const int  _id = 1;
+
+        public AuthorEntity AuthorEntity()
+            => new AuthorEntity() { Name = _name , Id = _id };
 
         #region CreateAuthor  
 
@@ -41,8 +45,8 @@ namespace MyBook.Test
             var command = CreateCommand(_name);
 
             //Act
-            var obj = new AuthorEntity() { Name = _name };
-            _repo.Setup(c => c.Add(It.IsAny<AuthorEntity>())).Returns(obj);
+            var obj = 
+            _repo.Setup(c => c.Add(It.IsAny<AuthorEntity>())).Returns(AuthorEntity());
 
             var result = await RunCreateAuthor(command);
 
@@ -70,8 +74,8 @@ namespace MyBook.Test
         {
            
             //Arrange
-            var obj = new AuthorEntity() { Name = _name };
-            var list = new List<AuthorEntity>() { obj };
+           
+            var list = new List<AuthorEntity>() { AuthorEntity() };
 
             //Act
             _repo.Setup(c => c.GetAll()).Returns(list);
@@ -108,8 +112,8 @@ namespace MyBook.Test
             var command = CreateFindByIdCommand(_id);
 
             //Act
-            var obj = new AuthorEntity() { Id = _id, Name = _name };
-            _repo.Setup(c => c.Find(It.IsAny<int>())).Returns(obj);
+          
+            _repo.Setup(c => c.Find(It.IsAny<int>())).Returns(AuthorEntity());
 
             var result = await RunFindByIdAuthor(command);
 
@@ -139,8 +143,8 @@ namespace MyBook.Test
 
 
             //Act
-            var obj = new AuthorEntity() { Id = _id, Name = _name };
-            _repo.Setup(c => c.Find(It.IsAny<int>())).Returns(obj);
+        
+            _repo.Setup(c => c.Find(It.IsAny<int>())).Returns(AuthorEntity());
 
             _repo.Setup(c => c.Remove(It.IsAny<AuthorEntity>()));
 
