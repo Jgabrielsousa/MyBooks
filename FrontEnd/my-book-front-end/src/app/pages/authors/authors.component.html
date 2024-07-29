@@ -1,0 +1,26 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <button mat-flat-button routerLink="/">Voltar</button>
+      <!-- <mat-card-subtitle>Herding group</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-actions>
+        <table>
+            <tr>
+              <th>Id</th>
+              <th>Autor</th>
+              <th>Livros</th>
+            </tr>
+            <tr *ngFor="let a of authors">
+              <td>{{a.id}}</td>
+              <td>{{a.name}}</td>
+              <td><button mat-flat-button routerLink="/{{a.id}}">Livros</button></td>
+            </tr>
+
+          </table>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+
+
+
+

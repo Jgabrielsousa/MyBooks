@@ -1,0 +1,39 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+
+      <mat-card-subtitle>Livros</mat-card-subtitle>
+      <br />
+    </mat-card-header>
+    <mat-card-actions *ngFor="let book of books">
+
+        <div style="margin-top: 40px;">
+
+            <b>{{book.Title}} / Autor: {{book.AuthorName}}</b>
+            <br />Publicacao {{book.PublicationDate}}
+            <br />Assuntos:
+            <div *ngFor="let subject of book.Subjects">
+            <div class="assuntos">-{{subject.Description}}</div>
+            </div>
+
+        <mat-tab-group >
+              <mat-tab *ngFor="let sales of book.SaleTypes" label="{{sales.Description}}">
+
+                {{sales.Value.toString()| currency:'BRL' }}
+                <div>Edicao = {{ book.Edition }}</div>
+
+            </mat-tab>
+
+            </mat-tab-group>
+
+        </div>
+
+
+
+
+
+    </mat-card-actions>
+  </mat-card>
+  <br>
+
+
+
